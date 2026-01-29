@@ -1,4 +1,4 @@
-# DORMO – 
+# DORMO 
 Dormo is a simple web app that helps hostel students see washing machine availability in real time, avoid unnecessary waiting, and use shared machines more efficiently.
 
 
@@ -22,7 +22,7 @@ In my hostel, students do not know:
 This app provides a shared, live view so everyone can plan their laundry without crowding or guesswork.
 
 
-## Tech Stack (Planned)
+## Tech Stack
 
 - Frontend: (e.g.) React / Next.js or Flutter / React Native  
 - Backend: Firebase (Auth + Firestore/Realtime Database)  
@@ -50,7 +50,7 @@ You can adapt these choices depending on your preferences.
 
    ```bash
    git clone <your-repo-url>
-   cd hostel-laundry-live
+   cd dormo
    ```
 
 2. **Install dependencies**
