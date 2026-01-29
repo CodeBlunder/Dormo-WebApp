@@ -20,33 +20,30 @@ export function listenToMachines(callback: (machines: Machine[]) => void): () =>
   });
 }
 
-// Initialize machines in Firebase
+// Initialize machines in Firebase - UPDATED TO ADD MISSING MACHINES
+// Temporary reset version (use with caution)
 export async function initializeMachines(initialMachines: Machine[]): Promise<void> {
   try {
-    // Check if machines already exist
-    const snapshot = await get(machinesRef);
-    if (!snapshot.exists()) {
-      const machinesObject: any = {};
-      initialMachines.forEach(machine => {
-        machinesObject[machine.id] = {
-          id: machine.id,
-          status: MachineStatus.FREE,
-          endTime: null,
-          totalDuration: null,
-          currentUser: null
-        };
-      });
-      await set(machinesRef, machinesObject);
-      console.log('Machines initialized in Firebase');
-    } else {
-      console.log('Machines already exist in Firebase');
-    }
+    // ALWAYS reset to initial state (WARNING: Clears existing data!)
+    const machinesObject: any = {};
+    initialMachines.forEach(machine => {
+      machinesObject[machine.id] = {
+        id: machine.id,
+        status: MachineStatus.FREE,
+        endTime: null,
+        totalDuration: null,
+        currentUser: null,
+        startTime: null
+      };
+    });
+    await set(machinesRef, machinesObject);
+    console.log(`Reset all ${initialMachines.length} machines in Firebase`);
   } catch (error) {
     console.error('Error initializing machines:', error);
   }
 }
 
-// machineService.ts - Update the startMachine function
+// Start a machine
 export async function startMachine(machineId: number, user: any, duration: number): Promise<void> {
   const machineRef = ref(database, `machines/${machineId}`);
   const startTime = Date.now(); // Capture start time
@@ -54,19 +51,19 @@ export async function startMachine(machineId: number, user: any, duration: numbe
   
   await update(machineRef, {
     status: MachineStatus.RUNNING,
-    startTime: startTime, // Add this
+    startTime: startTime,
     endTime: endTime,
     totalDuration: duration,
     currentUser: user
   });
 }
 
-// Update the resetMachine function to clear startTime
+// Reset a machine to FREE
 export async function resetMachine(machineId: number): Promise<void> {
   const machineRef = ref(database, `machines/${machineId}`);
   await update(machineRef, {
     status: MachineStatus.FREE,
-    startTime: null, // Add this
+    startTime: null,
     endTime: null,
     totalDuration: null,
     currentUser: null

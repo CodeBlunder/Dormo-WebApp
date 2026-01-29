@@ -10,7 +10,8 @@ const INITIAL_MACHINES: Machine[] = Array.from({ length: 12 }, (_, i) => ({
   status: MachineStatus.FREE,
   endTime: null,
   totalDuration: null,
-  currentUser: null
+  currentUser: null,
+  startTime: null
 }));
 
 const STATIC_TIPS: LaundryTip[] = [
