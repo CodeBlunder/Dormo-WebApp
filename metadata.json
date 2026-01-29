@@ -1,0 +1,6 @@
+
+{
+  "name": "Dormo",
+  "description": "A real-time washing machine monitoring and management system for hostel residents. Track machine availability, start cycles, and get laundry tips.",
+  "requestFramePermissions": []
+}
