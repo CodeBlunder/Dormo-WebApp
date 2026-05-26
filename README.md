@@ -79,3 +79,7 @@ You can adapt these choices depending on your preferences.
    - Mark a machine as running on one device.  
    - Watch it update instantly on another device.
 
+
+
+Deployed using Netlify
+https://golden-mandazi-4dbb9e.netlify.app/
