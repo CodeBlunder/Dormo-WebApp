@@ -81,5 +81,3 @@ You can adapt these choices depending on your preferences.
 
 
 
-Deployed using Netlify
-https://golden-mandazi-4dbb9e.netlify.app/
